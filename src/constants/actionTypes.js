@@ -1,0 +1,3 @@
+export const IS_LOADING = 'IS_LOADING';
+export const IS_COMPLETE = 'IS_COMPLETE';
+export const GET_ALL_MOVIES_SUCCESS = 'GET_ALL_MOVIES_SUCCESS';
