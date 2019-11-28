@@ -1,13 +1,15 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import '../../styles/app.scss';
 import Footer from '../Footer';
 import MovieList from '../MovieList';
 import Navigation from '../Navigation';
-import { getAllMovies } from '../../actions/movieAction';
+import { getAllMovies, searchMovie } from '../../actions/movieAction';
 
-class Home extends Component {
-
+class Home extends PureComponent {
+  state = {
+    searchInput: ''
+  }
    /**
    * @description Fetches all the scheduled movies
    */
@@ -16,15 +18,34 @@ class Home extends Component {
   await getAppAllMovies();
 }
 
+searchInputHandler = (event) => {
+  this.setState({
+    searchInput: event.target.value
+  })
+}
+
+searchHandler = async (event) => {
+  event.preventDefault();
+  const { queryMovie, history, location } = this.props;
+  const searchKeyword = Object.assign({}, this.state);
+  await queryMovie(searchKeyword.searchInput);
+  history.push(`/search?q=${searchKeyword.searchInput}`, { from: location.pathname });
+
+}
+
   render(){
-    const {  allMovies, loading, message } = this.props;
+    const {  allMovies, loading, networkMessage } = this.props;
     return(
       <Fragment>
         <div id="site-content">
-          <Navigation />
+          <Navigation
+            searchInputHandler={this.searchInputHandler}
+            submitHandler={this.searchHandler}
+            keyword={this.state.searchInput}
+          />
           <MovieList
             loader={loading}
-            message={message}
+            networkMessage={networkMessage}
             movies={allMovies}
           />
           <Footer />
@@ -37,11 +58,12 @@ class Home extends Component {
 const mapStateToProps = state => ({
   allMovies: state.movies.allMovies,
   loading: state.loader.appLoader,
-  message: state.messages.appMessage
+  networkMessage: state.messages.networkMessage
 });
 
 export const mapDispatchToProps = dispatch => ({
   getAppAllMovies: () => dispatch(getAllMovies()),
+  queryMovie: (keyword) => dispatch(searchMovie(keyword))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

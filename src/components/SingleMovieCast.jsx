@@ -2,13 +2,19 @@ import React, { Fragment } from 'react'
 
 const SingleMovieCast = (props) => {
   const { castInfo, castList } = props;
-  let characterImage;
+  let characterImage, castCountry;
+  // castCountry = 'Not Available';
   if (castList) {
     if (castInfo.character.image === null) {
       characterImage = 'https://res.cloudinary.com/dreamqube-technology-limited/image/upload/v1574964550/no-img_embffd.png';
+      
+    }
+    if(castInfo.character.image === null) {
+      castCountry = 'Not Available';
     }
     else {
       characterImage = castInfo.character.image.medium;
+      castCountry = castInfo.person.country.name;
     }
   }
   return (
@@ -30,7 +36,7 @@ const SingleMovieCast = (props) => {
             <small className="team-title">Character: {castInfo.character.name}</small>
             <div className="social-links">
               <div >
-                Country: {castInfo.person.country.name}
+                Country: {castCountry}
               </div>
              
             </div>

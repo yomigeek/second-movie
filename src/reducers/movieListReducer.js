@@ -3,6 +3,7 @@ const initialState = {
   allMovies: [],
   singleMovie: {},
   movieCast: [],
+  movieSearchList: [],
 }
 
 const movieListReducer = (state = initialState, action) => {
@@ -19,6 +20,11 @@ const movieListReducer = (state = initialState, action) => {
         ...state,
         singleMovie: payload,
         movieCast: castPayload
+      };
+    case types.SEARCH_MOVIE_SUCCESS:
+      return {
+        ...state,
+        movieSearchList: payload,
       };
     default:
       return state;

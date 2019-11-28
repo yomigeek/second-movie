@@ -18,14 +18,14 @@ class SingleMovieContainer extends Component {
 }
 
   render(){
-    const {  movie, loading, message, cast } = this.props;
+    const {  movie, loading, networkMessage, cast } = this.props;
     return(
       <Fragment>
         <div id="site-content">
           <Navigation />
           <SingleMovie
             loader={loading}
-            message={message}
+            networkMessage={networkMessage}
             movieInfo={movie}
             movieCast={cast}
           />
@@ -40,7 +40,7 @@ const mapStateToProps = state => ({
   movie: state.movies.singleMovie,
   cast: state.movies.movieCast,
   loading: state.loader.appLoader,
-  message: state.messages.appMessage
+  networkMessage: state.messages.networkMessage
 });
 
 export const mapDispatchToProps = dispatch => ({

@@ -4,17 +4,21 @@ import SingleMovieCard from './SingleMovieCard';
 import HeaderBreadCrumb from './HeaderBreadCrumb';
 
 const SingleMovie = (props) => {
-  const { movieInfo, loader, message, movieCast } = props;
-    
+  const { movieInfo, loader, networkMessage, movieCast } = props;
+  const movieCard = <SingleMovieCard 
+  movieInfo={movieInfo}
+  movieCast={movieCast}
+  loader={loader}
+/>
   return(
     <Fragment>
       <main className="main-content">
               <div className="container">
                 <div className="page">
                 <HeaderBreadCrumb />
-              {
+              {/* {
                 message ? <div className="message-box">{message}</div> : ''
-              }
+              } */}
               {
               loader ? 
                 <Loader 
@@ -22,10 +26,7 @@ const SingleMovie = (props) => {
                   loadingText="Loading Movie Information..."
                 /> 
               : 
-              <SingleMovieCard 
-                movieInfo={movieInfo}
-                movieCast={movieCast}
-              />
+              networkMessage ? <div className="message-box">{networkMessage}</div>  : movieCard
                 
             }
               

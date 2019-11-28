@@ -1,6 +1,6 @@
 import * as types from '../constants/actionTypes';
 const initialState = {
-  appMessage: '',
+  networkMessage: '',
 }
 
 const messageReducer = (state = initialState, action) => {
@@ -10,7 +10,7 @@ const messageReducer = (state = initialState, action) => {
     case types.SERVER_ERROR:
       return {
         ...state,
-        appMessage: message ,
+        networkMessage: message ,
       };
     default:
       return state;

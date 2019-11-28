@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const Navigation = (props) => {
+const Navigation = ({
+  searchInputHandler, submitHandler, keyword
+}) => {
   return(
     <header className="site-header">
     <div className="container">
@@ -14,9 +16,15 @@ const Navigation = (props) => {
       </Link>
 
       <div className="main-navigation">
-        <form action="#" className="">
-          <input type="text" placeholder="Search..." />
-          <button><i className="fa fa-search"></i></button>
+        <form onSubmit={submitHandler}>
+          <input 
+            type="text" 
+            placeholder="Search..." 
+            onChange={searchInputHandler}
+            value={keyword}
+            required
+          />
+          <button onClick={submitHandler}><i className="fa fa-search"></i></button>
         </form>
       </div>
 

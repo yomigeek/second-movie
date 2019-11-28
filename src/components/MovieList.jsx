@@ -5,7 +5,7 @@ import HeaderBreadCrumb from './HeaderBreadCrumb';
 
 
 const MovieList = ({
-  loader, message, movies
+  loader, networkMessage, movies
 }) => {
   return (
     <main className="main-content">
@@ -27,7 +27,7 @@ const MovieList = ({
                 </div>
             }
             {
-              message ? <div className="message-box">{message}</div> : ''
+              networkMessage ? <div className="message-box">{networkMessage}</div> : ''
             }
           </div>
           
