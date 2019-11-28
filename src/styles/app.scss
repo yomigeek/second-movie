@@ -344,6 +344,21 @@ form textarea {
   display: block;
   top: -19px;
 }
+.app-loader {
+  text-align: center;
+}
+.message-box{
+  text-align: center;
+  margin: 40px;
+}
+.single-movie-img {
+  height: 500px;
+  width: 500px;
+}
+.cast-list {
+  text-align: center;
+  margin: 30px;
+}
 
 .button,
 form input[type="submit"],

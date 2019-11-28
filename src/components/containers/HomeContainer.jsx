@@ -10,20 +10,23 @@ class Home extends Component {
 
    /**
    * @description Fetches all the scheduled movies
-   * @returns {null}
    */
  componentDidMount = async () => {
   const { getAppAllMovies } = this.props;
-  const response = await getAppAllMovies();
-  console.log(response, 'in class');
+  await getAppAllMovies();
 }
 
   render(){
+    const {  allMovies, loading, message } = this.props;
     return(
       <Fragment>
         <div id="site-content">
           <Navigation />
-          <MovieList />
+          <MovieList
+            loader={loading}
+            message={message}
+            movies={allMovies}
+          />
           <Footer />
         </div>
       </Fragment>
@@ -33,6 +36,8 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   allMovies: state.movies.allMovies,
+  loading: state.loader.appLoader,
+  message: state.messages.appMessage
 });
 
 export const mapDispatchToProps = dispatch => ({
