@@ -53,7 +53,6 @@ class SearchBoxContainer extends PureComponent {
             <button onClick={this.searchHandler}><i className="fa fa-search"></i></button>
           </form>
         </div>
-        {/* </div> */}
       </Fragment>
     )
   }
