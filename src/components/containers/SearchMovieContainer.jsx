@@ -18,7 +18,7 @@ class SearchMovieContainer extends PureComponent {
     }
   }
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
     const {
       history, location, queryMovie, searchResult,
     } = this.props;

@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import paginate from 'paginate-array';
 import '../../styles/app.scss';
@@ -7,7 +7,7 @@ import MovieList from '../MovieList';
 import Navigation from '../Navigation';
 import { getAllMovies, searchMovie } from '../../actions/movieAction';
 
-class Home extends PureComponent {
+class Home extends Component {
   state = {
     searchInput: '',
     size: 4,

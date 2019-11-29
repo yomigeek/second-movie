@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import SearchBoxContainer from '../components/containers/SearchBoxContainer';
 
 const Navigation = ({
   searchInputHandler, submitHandler, keyword
@@ -15,19 +16,7 @@ const Navigation = ({
           />
 
         </Link>
-
-        <div className="main-navigation">
-          <form onSubmit={submitHandler}>
-            <input
-              type="text"
-              placeholder="Search..."
-              onChange={searchInputHandler}
-              value={keyword}
-              required
-            />
-            <button onClick={submitHandler}><i className="fa fa-search"></i></button>
-          </form>
-        </div>
+        <SearchBoxContainer />
 
         <div className="mobile-navigation"></div>
       </div>
