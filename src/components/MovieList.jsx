@@ -28,7 +28,7 @@ const MovieList = ({
                 :
                 <div className="movie-list">
                   {
-                    movies.map(movie => <MovieCard key={movie.show.id} movieInfo={movie} />)
+                    movies.map(movie => <MovieCard key={movie.id} movieInfo={movie} />)
                   }
                 </div>
             }
