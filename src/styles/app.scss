@@ -1,11 +1,9 @@
 @import 'colors';
 
 /*!
- * Project_Name: Themezy Movie Review
+Credit to 
  * Author: Themezy
- * Email: info@themezy.com
- * URL: http://themezy.com
- */
+ *Some part of this CSS Library
 /*=========================================== 
  * Importing CSS Libraries
  *===========================================*/
@@ -370,6 +368,14 @@ form textarea {
   font-size: 18px;
   text-align: center;
   margin: 40px;
+}
+
+.page-404-text {
+  text-align: center;
+}
+
+.pagination-button {
+  margin: 25px;
 }
 
 .button,
@@ -2441,7 +2447,7 @@ all and (min-device-pixel-ratio: 1.5) {
 
 .pagination .page-number {
   display: inline-block;
-  width: 40px;
+  width: 80px;
   height: 40px;
   border-radius: 5px;
   background: #e7e7e7;
@@ -2457,7 +2463,16 @@ all and (min-device-pixel-ratio: 1.5) {
 .pagination .page-number.current,
 .pagination .page-number:hover {
   background: $appOrangeColor;
-  color: white;
+  color: white; 
+}
+.page-number:disabled {
+  background: #eee;
+  color: #fff;
+}
+
+.page-number:disabled:hover {
+  background: #eee;
+  color: #fff;
 }
 
 .movie-meta,

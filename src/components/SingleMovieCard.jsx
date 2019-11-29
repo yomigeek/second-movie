@@ -4,8 +4,8 @@ import SingleMovieCast from './SingleMovieCast';
 const SingleMovieCard = (props) => {
   const { movieInfo, movieCast } = props;
   let movieImg, movieSummary, movieScheduleTime, movieScheduleDays;
-  if (movieInfo.image === undefined) {
-    movieImg = '';
+  if (movieInfo.image === undefined || movieInfo.image === null) {
+    movieImg = 'https://res.cloudinary.com/dreamqube-technology-limited/image/upload/v1574964550/no-img_embffd.png';
   }
   else {
     movieImg = movieInfo.image.original;
