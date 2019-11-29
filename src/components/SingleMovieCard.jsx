@@ -20,7 +20,7 @@ const SingleMovieCard = (props) => {
           <figure className="movie-poster">
             <img src={movieImg}
               className="single-movie-img "
-            alt="#" />
+              alt="#" />
           </figure>
         </div>
         <div className="col-md-6">
@@ -32,7 +32,7 @@ const SingleMovieCard = (props) => {
           <div className="movie-summary">
             <p>
               {movieSummary}
-            </p>  
+            </p>
           </div>
           <ul className="movie-meta">
             <li>
@@ -54,22 +54,22 @@ const SingleMovieCard = (props) => {
       <hr />
       <br />
       <div className="row">
-        
+
         {
-          movieCast.length > 0 
-          ? 
-            movieCast.map( cast => 
-            <SingleMovieCast 
-              key={cast.person.id} 
-              castInfo={cast} 
-              castList={true}
-            />)
-          :
-          <SingleMovieCast 
-            castList={false}
-          />
+          movieCast.length > 0
+            ?
+            movieCast.map(cast =>
+              <SingleMovieCast
+                key={cast.person.id}
+                castInfo={cast}
+                castList={true}
+              />)
+            :
+            <SingleMovieCast
+              castList={false}
+            />
         }
-        
+
       </div>
     </div>
   )

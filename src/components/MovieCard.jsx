@@ -7,15 +7,15 @@ const MovieCard = (props) => {
   movieSummary = 'No summary available!';
   movieImg = 'https://res.cloudinary.com/dreamqube-technology-limited/image/upload/v1574964550/no-img_embffd.png';
 
-  if(movieInfo.show.image !== null) {
+  if (movieInfo.show.image !== null) {
     movieImg = movieInfo.show.image.medium;
   }
-  if(movieInfo.show.summary !== null) {
+  if (movieInfo.show.summary !== null) {
     movieSummary = movieInfo.show.summary.substring(0, 150).replace(/<\/?("[^"]*"|'[^']*'|[^>])*(>|$)/g, "") + `...`
   }
-  return(
+  return (
     <Fragment>
-        <div className="movie">
+      <div className="movie">
         <figure className="movie-poster">
           <img src={movieImg} alt="#" />
         </figure>
@@ -29,7 +29,7 @@ const MovieCard = (props) => {
             Type: {movieInfo.show.type}
           </span>
           <span className="movie-year">
-             {movieInfo.show.language}
+            {movieInfo.show.language}
           </span>
         </div>
         <p>

@@ -8,18 +8,18 @@ import SingleMovie from '../SingleMovie';
 
 class SingleMovieContainer extends Component {
 
-   /**
-   * @description Fetches the single movie info
-   */
- componentDidMount = async () => {
-  const { getMovieInfo, match } = this.props;
-  const { movieId } = match.params;
-  await getMovieInfo(movieId);
-}
+  /**
+  * @description Fetches the single movie info
+  */
+  componentDidMount = async () => {
+    const { getMovieInfo, match } = this.props;
+    const { movieId } = match.params;
+    await getMovieInfo(movieId);
+  }
 
-  render(){
-    const {  movie, loading, networkMessage, cast } = this.props;
-    return(
+  render() {
+    const { movie, loading, networkMessage, cast } = this.props;
+    return (
       <Fragment>
         <div id="site-content">
           <Navigation />
@@ -44,7 +44,7 @@ const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch => ({
-  getMovieInfo: (id) =>  dispatch(getSingleMovie(id)),
+  getMovieInfo: (id) => dispatch(getSingleMovie(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleMovieContainer);

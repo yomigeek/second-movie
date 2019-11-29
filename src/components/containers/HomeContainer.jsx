@@ -18,75 +18,76 @@ class Home extends PureComponent {
   /**
    * @description Fetches all the scheduled movies
   */
- UNSAFE_componentWillMount = async () => {
-  const { getAppAllMovies } = this.props;
-  await getAppAllMovies();
-  const { page, size } = this.state;
-  const currentPage = paginate(this.props.allMovies, page, size);
-
-  this.setState({
-    ...this.state,
-    appMovieList: this.props.allMovies,
-    currentPage,
-  });
-
-}
-
-previousPage = () => {
-  const { page, size, appMovieList } = this.state;
-
-  if (page > 1) {
-    const newPage = page - 1;
-    const newCurrentPage = paginate(appMovieList, newPage, size);
+  componentDidMount = async () => {
+    const { getAppAllMovies } = this.props;
+    await getAppAllMovies();
+    const { page, size } = this.state;
+    const currentPage = paginate(this.props.allMovies, page, size);
 
     this.setState({
       ...this.state,
-      page: newPage,
-      currentPage: newCurrentPage
+      appMovieList: this.props.allMovies,
+      currentPage,
     });
+
   }
-}
 
-nextPage = () => {
-  const { currentPage, page, size, appMovieList } = this.state;
-  console.log('nx', appMovieList);
+  previousPage = () => {
+    const { page, size, appMovieList } = this.state;
 
-  if (page < currentPage.totalPages) {
-    const newPage = page + 1;
-    const newCurrentPage = paginate(appMovieList, newPage, size);
-    this.setState({ ...this.state, page: newPage, currentPage: newCurrentPage });
+    if (page > 1) {
+      const newPage = page - 1;
+      const newCurrentPage = paginate(appMovieList, newPage, size);
+
+      this.setState({
+        ...this.state,
+        page: newPage,
+        currentPage: newCurrentPage
+      });
+    }
   }
-}
 
+  nextPage = () => {
+    const { currentPage, page, size, appMovieList } = this.state;
+    if (page < currentPage.totalPages) {
+      const newPage = page + 1;
+      const newCurrentPage = paginate(appMovieList, newPage, size);
+      this.setState({
+        ...this.state,
+        page: newPage,
+        currentPage: newCurrentPage
+      });
+    }
+  }
 
-searchInputHandler = (event) => {
-  this.setState({
-    searchInput: event.target.value
-  })
-}
+  searchInputHandler = (event) => {
+    this.setState({
+      searchInput: event.target.value
+    })
+  }
 
-searchHandler = async (event) => {
-  event.preventDefault();
-  const { queryMovie, history, location } = this.props;
-  const searchKeyword = Object.assign({}, this.state);
-  await queryMovie(searchKeyword.searchInput);
-  history.push(`/search?q=${searchKeyword.searchInput}`, { from: location.pathname });
+  searchHandler = async (event) => {
+    event.preventDefault();
+    const { queryMovie, history, location } = this.props;
+    const searchKeyword = Object.assign({}, this.state);
+    await queryMovie(searchKeyword.searchInput);
+    history.push(`/search?q=${searchKeyword.searchInput}`, { from: location.pathname });
 
-}
+  }
 
-  render(){
-    const {  allMovies, loading, networkMessage } = this.props;
+  render() {
+    const { allMovies, loading, networkMessage } = this.props;
     const { page, currentPage } = this.state;
-    let currentPageMoviesData, currentPageNewNumber;
+    let currentPageMoviesData, currentPageTotalNumber;
     if (currentPage === null) {
       currentPageMoviesData = allMovies
     }
     else {
       currentPageMoviesData = currentPage.data;
-      currentPageNewNumber = currentPage.totalPages;
+      currentPageTotalNumber = currentPage.totalPages;
     }
 
-    return(
+    return (
       <Fragment>
         <div id="site-content">
           <Navigation
@@ -101,7 +102,7 @@ searchHandler = async (event) => {
             prevHandler={this.previousPage}
             nextHandler={this.nextPage}
             appCurrentPage={page}
-            appLastPage={currentPageNewNumber}
+            appLastPage={currentPageTotalNumber}
           />
           <Footer />
         </div>

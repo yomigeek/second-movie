@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import Navigation from './Navigation';
 
-const Page404 = (props) => {
+const Page404 = () => {
   return (
     <Fragment>
       <Navigation
