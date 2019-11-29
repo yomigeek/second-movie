@@ -8,11 +8,12 @@ const Navigation = ({
     <header className="site-header">
       <div className="container">
         <Link to="/" id="branding">
-          <img src="https://www.wowza.com/uploads/images/WowzaProfessionalServices.png" alt="" className="logo" />
-          <div className="logo-copy">
-            <h1 className="site-title">Stream</h1>
-            <small className="site-description">Binge w/ Fun!</small>
-          </div>
+          <img
+            src="https://res.cloudinary.com/dreamqube-technology-limited/image/upload/v1574993312/logo_nk0zam.png"
+            alt=""
+            className="logo"
+          />
+
         </Link>
 
         <div className="main-navigation">

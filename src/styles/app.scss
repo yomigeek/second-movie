@@ -342,17 +342,21 @@ form textarea {
   display: block;
   top: -19px;
 }
+
 .app-loader {
   text-align: center;
 }
-.message-box{
+
+.message-box {
   text-align: center;
   margin: 40px;
 }
+
 .single-movie-img {
   height: 500px;
   width: 500px;
 }
+
 .cast-list {
   text-align: center;
   margin: 30px;
@@ -2075,8 +2079,8 @@ all and (min-device-pixel-ratio: 1.5) {
 
 #branding .logo {
   margin-right: 10px;
-  height: 50px;
-  width: 50px
+  height: 45px;
+  width: 150px
 }
 
 #branding .site-title {
@@ -2463,8 +2467,9 @@ all and (min-device-pixel-ratio: 1.5) {
 .pagination .page-number.current,
 .pagination .page-number:hover {
   background: $appOrangeColor;
-  color: white; 
+  color: white;
 }
+
 .page-number:disabled {
   background: #eee;
   color: #fff;
